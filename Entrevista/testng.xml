@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Pyxis Interview Suite">
+	<parameter name="user" value="gcabanaciu@gmail.com"></parameter>
+	<parameter name="password" value="Test2021"></parameter>
+
+	<test thread-count="5" name="Trello 1st Test">
+
+		<parameter name="boardName" value="1st Board"></parameter>
+		<parameter name="listName" value="1st List"></parameter>
+		<classes>
+			<class name="Technical.Interview.Pyxis" />
+		</classes>
+	</test>
+
+
+	<test thread-count="5" name="Trello 2nd Test">
+		<parameter name="boardName" value="2nd Board"></parameter>
+		<parameter name="listName" value="2nd List"></parameter>
+		<classes>
+			<class name="Technical.Interview.Pyxis" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
