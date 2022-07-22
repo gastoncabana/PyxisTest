@@ -2,7 +2,9 @@
 
 #Instalacion
 1-Para instalar el proyecto, se debe descargar la carpeta "Entrevista" del repositorio y guardarla en alguna carpeta de su preferencia.
+
 2-Abrir eclipse y dirigirse a  File>Import>Maven>Existing Maven Projects , localizar la carpeta previamente descargada, seleccionarla y apretar Finish.
+
 3-Navegar hasta el proyecto en el Project explorer, hacerle click derecho : Maven> Update project. 
 
 #Descripcion de Proyecto
