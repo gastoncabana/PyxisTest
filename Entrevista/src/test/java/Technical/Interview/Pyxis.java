@@ -2,6 +2,8 @@ package Technical.Interview;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -32,18 +34,16 @@ public class Pyxis extends DriverFactory {
 		driver = init();
 	}
 
-	int screenShotCounter = 1;
-	
-	@Parameters({"user","password","boardName","listName"})
+	@Parameters({ "user", "password", "boardName", "listName" })
 	@Test
-	public void navigate(String user,String password, String boardName, String listName) throws InterruptedException {
+	public void navigate(String user, String password, String boardName, String listName) throws InterruptedException {
 
 		
-		
-		// HomePage hp = new HomePage(driver);
-		// hp.getIniciarSesionLink().click();
+		/* Aqui, la unica funcionalidad es dirigirnos desde trello.com a trello.com/Login. 
+		 HomePage hp = new HomePage(driver);
+		 hp.getIniciarSesionLink().click();*/
 
-		// Login Page
+		// Login Page : User Log in
 		LoginPage lp = new LoginPage(driver);
 		lp.completeUsername(user);
 		lp.clickLogin(driver.getTitle());
@@ -51,28 +51,26 @@ public class Pyxis extends DriverFactory {
 		lp.completePassword(password);
 		lp.clickLogin(driver.getTitle());
 
-		// Board Creation page
+		// Board Creation page : User creates board
 		CreateBoardPage cp = new CreateBoardPage(driver);
 		cp.completeBoard(boardName);
 		wait.until(ExpectedConditions.elementToBeClickable(cp.createBoardBtn()));
 		cp.createBoard();
 
-		// List creation
+		// List creation : User creates List in the board
 		BoardPage bp = new BoardPage(driver);
 		bp.createList(listName);
 
 	}
 
-	
-
 	@AfterMethod
 	public void tearDown(ITestResult result) throws IOException {
 
 		if (ITestResult.FAILURE == result.getStatus()) {
-			screenShotCounter++;
+			String actualDateTime = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 			File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(src, new File(System.getProperty("user.dir") + "\\Screenshots\\screen"+screenShotCounter+".png"));
-			
+			FileUtils.copyFile(src,
+					new File(System.getProperty("user.dir") + "\\Screenshots\\screen" + actualDateTime + ".png"));
 		}
 		driver.quit();
 	}

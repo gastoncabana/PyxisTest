@@ -2,10 +2,7 @@ package PageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import resources.DriverFactory;
@@ -20,16 +17,20 @@ public class CreateBoardPage extends DriverFactory {
 		PageFactory.initElements(driver, this);
 	}
 
+	//Locator to create new board
 	By createNewBoardDiv = By.cssSelector("div.mod-add");
 
+	//Locator for board name input
 	By newBoardNameInput = By.cssSelector("input[data-test-id='create-board-title-input']");
 
+	//Locator for "Crear" button
 	By createBoardInput = By.cssSelector("button[data-test-id='create-board-submit-button']");
 
 	
 	public By createBoardBtn() {
 		return createBoardInput;
 	}
+	
 	
 	public void completeBoard(String name) {
 		

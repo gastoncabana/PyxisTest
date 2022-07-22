@@ -2,10 +2,7 @@ package PageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage {
@@ -19,15 +16,13 @@ public class LoginPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	// Locator for username field
+	// Locator for username input
 	By user = By.id("user");
-
-	// Locator for password field
+	// Locator for password input
 	By password = By.id("password");
-
 	// Locator for login button
 	By loginBtn = By.id("login");
-
+	// Locator for login button in atlassian log in
 	By loginAtlassianBtn = By.id("login-submit");
 
 	public void completeUsername(String us) {
@@ -46,7 +41,7 @@ public class LoginPage {
 		// Dependiendo que titulo tiene la pagina, es el id del boton que usa, siendo el
 		// id de login de trello, diferente al de atlassian.
 		if (a.equalsIgnoreCase("Log in to Trello")) {
-			;
+
 			driver.findElement(loginBtn).click();
 		} else if (a.equalsIgnoreCase("Log in to continue - Log in with Atlassian account")) {
 
